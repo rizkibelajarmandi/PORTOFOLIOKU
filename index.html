@@ -10,6 +10,15 @@
     <!-- Tailwind Config (WAJIB inline) -->
     <script>
         tailwind.config = {
+            safelist: [
+                'p-6', 'p-5', 'px-3', 'py-1.5', 'mb-4', 'mb-2', 
+                'bg-white', 'bg-mono-50', 'border-mono-200', 
+                'rounded-xl', 'rounded', 'flex', 'flex-col', 'justify-between', 
+                'inline-flex', 'items-center', 'gap-2', 'w-fit', 'mt-auto', 
+                'text-lg', 'text-xs', 'text-[10px]', 'font-bold', 'font-semibold', 
+                'text-mono-900', 'text-mono-600', 'text-mono-500', 'uppercase', 
+                'tracking-wider', 'leading-relaxed', 'transition-colors'
+            ],
             theme: {
                 extend: {
                     colors: {
@@ -65,6 +74,7 @@
 
             <!-- Minimal Nav Links (Desktop) -->
             <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-mono-600">
+                <button onclick="navigateTo('home')" id="nav-home" class="nav-link py-2 hover:text-mono-900 transition-colors">Beranda</button>
                 <button onclick="navigateTo('about')" id="nav-about" class="nav-link py-2 hover:text-mono-900 transition-colors">Tentang</button>
                 <button onclick="navigateTo('projects')" id="nav-projects" class="nav-link py-2 hover:text-mono-900 transition-colors">Proyek</button>
                 <button onclick="navigateTo('contact')" id="nav-contact" class="nav-link py-2 hover:text-mono-900 transition-colors">Kontak</button>
@@ -82,6 +92,7 @@
 
         <!-- Mobile Drawer Navigation -->
         <div id="mobile-nav" class="hidden md:hidden bg-white border-b border-mono-200 px-6 py-6 space-y-4 text-xs font-bold uppercase tracking-widest">
+            <button onclick="navigateTo('home'); toggleMobileNav();" class="block w-full text-left py-2 text-mono-700 hover:text-mono-900">Beranda</button>
             <button onclick="navigateTo('about'); toggleMobileNav();" class="block w-full text-left py-2 text-mono-700 hover:text-mono-900">Tentang</button>
             <button onclick="navigateTo('projects'); toggleMobileNav();" class="block w-full text-left py-2 text-mono-700 hover:text-mono-900">Proyek</button>
             <button onclick="navigateTo('contact'); toggleMobileNav();" class="block w-full text-left py-2 text-mono-700 hover:text-mono-900">Kontak</button>
@@ -136,7 +147,7 @@
                         <div class="lg:col-span-4 flex justify-center py-4 lg:py-0">
                             <div class="hero-img-container w-64 h-80 sm:w-72 sm:h-96">
                                 <div class="relative w-full h-full rounded-2xl overflow-hidden border border-mono-300 bg-mono-200 shadow-lg z-10 flex items-center justify-center">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                                    <img src="image/puwoto.jpeg" 
                                          alt="Achmad Fatkur Rizki" 
                                          class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500">
                                     <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-mono-950/90 to-transparent p-4 text-center">
@@ -239,88 +250,51 @@
                 </div>
             </section>
 
-            <!-- SECTION KONTAK -->
+            <!-- SECTION KONTAK (REVISI TANPA FORM) -->
             <section id="contact" class="py-20 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="max-w-3xl mb-16">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div class="mb-12">
                         <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500">Mari Terhubung</span>
                         <h2 class="text-3xl font-extrabold text-mono-900 tracking-tight mt-1">Kontak & Lokasi</h2>
-                        <div class="w-12 h-1 bg-mono-900 mt-3"></div>
+                        <div class="w-12 h-1 bg-mono-900 mt-3 mx-auto"></div>
+                        <p class="text-mono-600 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
+                            Terbuka untuk diskusi proyek pengembangan perangkat lunak web/mobile, pemodelan sistem, serta kesempatan kerja sama dan karir. Silakan hubungi saya melalui salah satu kanal di bawah ini.
+                        </p>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                        <!-- Direct Info -->
-                        <div class="lg:col-span-5 space-y-6">
-                            <h3 class="text-xl font-bold text-mono-900">Tertarik Berkolaborasi?</h3>
-                            <p class="text-mono-600 text-sm leading-relaxed">
-                                Terbuka untuk diskusi proyek pengembangan perangkat lunak web/mobile, pemodelan sistem, serta kesempatan kerja sama dan karir.
-                            </p>
-
-                            <div class="space-y-4 pt-2">
-                                <div class="flex items-center gap-4 p-4 bg-mono-50 border border-mono-200 rounded-xl">
-                                    <div class="w-10 h-10 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
-                                        <i class="fa-solid fa-envelope"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block">Email Resmi</span>
-                                        <a href="mailto:afatkurrizki@gmail.com" class="text-sm font-bold text-mono-900 hover:underline">afatkurrizki@gmail.com</a>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center gap-4 p-4 bg-mono-50 border border-mono-200 rounded-xl">
-                                    <div class="w-10 h-10 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
-                                        <i class="fa-solid fa-phone"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block">WhatsApp / Telepon</span>
-                                        <a href="https://wa.me/6281336973450" target="_blank" class="text-sm font-bold text-mono-900 hover:underline">+62 813 3697 3450</a>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center gap-4 p-4 bg-mono-50 border border-mono-200 rounded-xl">
-                                    <div class="w-10 h-10 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </div>
-                                    <div>
-                                        <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block">Domisili</span>
-                                        <span class="text-sm font-bold text-mono-900">Nganjuk, Jawa Timur, Indonesia</span>
-                                    </div>
-                                </div>
+                    <!-- Grid Kontak -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Email -->
+                        <a href="mailto:afatkurrizki@gmail.com" class="group bg-mono-50 p-8 rounded-2xl border border-mono-200 hover:border-mono-900 hover:shadow-lg transition-all flex flex-col items-center justify-center gap-4">
+                            <div class="w-14 h-14 bg-mono-900 text-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-envelope text-xl"></i>
                             </div>
-                        </div>
+                            <div>
+                                <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block mb-1">Email Resmi</span>
+                                <span class="text-sm font-bold text-mono-900">afatkurrizki@gmail.com</span>
+                            </div>
+                        </a>
 
-                        <!-- Form Kontak -->
-                        <div class="lg:col-span-7">
-                            <form id="contact-form" class="bg-mono-50 p-8 rounded-2xl border border-mono-200 space-y-6">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                    <div>
-                                        <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Nama Lengkap</label>
-                                        <input type="text" required placeholder="Nama Anda" class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white">
-                                    </div>
-                                    <div>
-                                        <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Alamat Email</label>
-                                        <input type="email" required placeholder="email@domain.com" class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white">
-                                    </div>
-                                </div>
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/6281336973450" target="_blank" class="group bg-mono-50 p-8 rounded-2xl border border-mono-200 hover:border-mono-900 hover:shadow-lg transition-all flex flex-col items-center justify-center gap-4">
+                            <div class="w-14 h-14 bg-mono-900 text-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block mb-1">WhatsApp / Telepon</span>
+                                <span class="text-sm font-bold text-mono-900">+62 813 3697 3450</span>
+                            </div>
+                        </a>
 
-                                <div>
-                                    <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Subjek Pesan</label>
-                                    <input type="text" required placeholder="Topik Diskusi / Kolaborasi" class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white">
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Isi Pesan</label>
-                                    <textarea rows="4" required placeholder="Tuliskan pesan Anda di sini..." class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white"></textarea>
-                                </div>
-
-                                <button type="submit" class="w-full py-4 rounded-lg bg-mono-900 text-white font-bold text-xs uppercase tracking-widest hover:bg-black transition-all">
-                                    Kirim Pesan Sekarang <i class="fa-solid fa-paper-plane ml-2"></i>
-                                </button>
-
-                                <div id="toast-message" class="hidden p-4 rounded-lg bg-mono-900 text-white text-xs font-mono text-center">
-                                    <i class="fa-solid fa-check-circle mr-2 text-emerald-400"></i> Pesan Anda telah terkirim! Terima kasih.
-                                </div>
-                            </form>
+                        <!-- Lokasi -->
+                        <div class="bg-mono-50 p-8 rounded-2xl border border-mono-200 flex flex-col items-center justify-center gap-4">
+                            <div class="w-14 h-14 bg-mono-900 text-white rounded-xl flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block mb-1">Domisili</span>
+                                <span class="text-sm font-bold text-mono-900">Nganjuk, Jawa Timur</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -328,7 +302,7 @@
         </div>
 
 
-        <!-- ================= PAGE 2: DEDICATED ABOUT PAGE (REVISI DESAIN) ================= -->
+        <!-- ================= PAGE 2: DEDICATED ABOUT PAGE ================= -->
         <div id="page-about" class="page-view hidden">
             
             <!-- Dark Header Banner -->
@@ -496,48 +470,8 @@
                             <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Pengalaman Kepanitiaan Event</h2>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Event 1 -->
-                            <div class="bg-white p-6 rounded-xl border border-mono-200">
-                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">OKT. 2026</span>
-                                <h3 class="text-lg font-bold text-mono-900 mb-2">Ketua Panitia Nganjuk Skill Up</h3>
-                                <p class="text-xs text-mono-600 leading-relaxed">Memimpin & mengkoordinasikan seluruh divisi kepanitiaan turnamen futsal dari tahap perencanaan hingga pelaksanaan.</p>
-                            </div>
-
-                            <!-- Event 2 -->
-                            <div class="bg-white p-6 rounded-xl border border-mono-200">
-                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">AGU. 2026 - SEKARANG</span>
-                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Media Partner Art Of Manunggal</h3>
-                                <p class="text-xs text-mono-600 leading-relaxed">Membangun hubungan kerja sama publikasi dengan berbagai platform media partner Jurusan Teknologi Informasi.</p>
-                            </div>
-
-                            <!-- Event 3 -->
-                            <div class="bg-white p-6 rounded-xl border border-mono-200">
-                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">SEP. 2026</span>
-                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Perlengkapan Nganjuk Skill Clash V2</h3>
-                                <p class="text-xs text-mono-600 leading-relaxed">Mengelola kebutuhan peralatan teknis dan perlengkapan arena Turnamen E-Sport.</p>
-                            </div>
-
-                            <!-- Event 4 -->
-                            <div class="bg-white p-6 rounded-xl border border-mono-200">
-                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">AGU. 2026</span>
-                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Acara Pra-PKKMB 2026</h3>
-                                <p class="text-xs text-mono-600 leading-relaxed">Bertanggung jawab atas konsep kegiatan, pengisi acara, dan pengawasan operasional alur acara Pra-PKKMB Polije Nganjuk.</p>
-                            </div>
-
-                            <!-- Event 5 -->
-                            <div class="bg-white p-6 rounded-xl border border-mono-200">
-                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">MEI. 2026</span>
-                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Acara Workshop Bisnis Digital</h3>
-                                <p class="text-xs text-mono-600 leading-relaxed">Menyusun rundown dan memandu jalannya sesi pelatihan Workshop Peluang Digital Untuk Bisnis Berkelanjutan.</p>
-                            </div>
-
-                            <!-- Event 6 -->
-                            <div class="bg-white p-6 rounded-xl border border-mono-200">
-                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">OKT. 2025</span>
-                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Humas Nganjuk Skill Clash</h3>
-                                <p class="text-xs text-mono-600 leading-relaxed">Sosialisasi turnamen Mobile Legends se-Kabupaten Nganjuk & menangani Customer Service layanan informasi.</p>
-                            </div>
+                        <!-- CUKUP GUNAKAN SATU DIV INI SAJA -->
+                        <div id="committee-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         </div>
                     </div>
 
@@ -644,78 +578,9 @@
                             <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Sertifikasi, Pelatihan & Penghargaan</h2>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <!-- Cert 1 -->
-                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
-                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
-                                    EPT
-                                </div>
-                                <div>
-                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">JUN. 2026</span>
-                                    <h3 class="text-base font-bold text-mono-900 mb-1">English Proficiency Test (Score: 48)</h3>
-                                    <p class="text-xs text-mono-600">Politeknik Negeri Jember PSDKU Nganjuk (Elementary Level).</p>
-                                </div>
-                            </div>
+                        <div id="certification-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                            <!-- Cert 2 -->
-                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
-                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
-                                    <i class="fa-solid fa-trophy text-lg"></i>
-                                </div>
-                                <div>
-                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">SEP. 2026</span>
-                                    <h3 class="text-base font-bold text-mono-900 mb-1">Nominasi 10 Terbaik Lomba Menulis Puisi Nasional</h3>
-                                    <p class="text-xs text-mono-600">Lomba Puisi Nasional "Merawat Masa Depan dalam Jejak Ayah" - Komunitas Rumah Hening.</p>
-                                </div>
-                            </div>
-
-                            <!-- Cert 3 -->
-                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
-                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
-                                    LKS
-                                </div>
-                                <div>
-                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">FEB. 2024</span>
-                                    <h3 class="text-base font-bold text-mono-900 mb-1">Harapan I LKS Administrasi Sistem Jaringan</h3>
-                                    <p class="text-xs text-mono-600">Lomba Kompetensi Siswa (LKS) tingkat Kabupaten Nganjuk bidang ASJ.</p>
-                                </div>
-                            </div>
-
-                            <!-- Cert 4 -->
-                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
-                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
-                                    KMM
-                                </div>
-                                <div>
-                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">APR. 2026</span>
-                                    <h3 class="text-base font-bold text-mono-900 mb-1">LKMM-TD (Tingkat Dasar)</h3>
-                                    <p class="text-xs text-mono-600">Diselenggarakan oleh HMJ Teknologi Informasi Politeknik Negeri Jember.</p>
-                                </div>
-                            </div>
-
-                            <!-- Cert 5 -->
-                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
-                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
-                                    UKK
-                                </div>
-                                <div>
-                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">FEB. 2025</span>
-                                    <h3 class="text-base font-bold text-mono-900 mb-1">Sertifikasi Uji Kompetensi Keahlian (UKK)</h3>
-                                    <p class="text-xs text-mono-600">Lulus sertifikasi pengujian kompetensi keahlian TKJ SMKN Sugihwaras.</p>
-                                </div>
-                            </div>
-
-                            <!-- Cert 6 -->
-                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
-                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
-                                    WEB
-                                </div>
-                                <div>
-                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">JAN. 2023 - JAN. 2026</span>
-                                    <h3 class="text-base font-bold text-mono-900 mb-1">Web Full Stack Developer (Gamelab)</h3>
-                                    <p class="text-xs text-mono-600">On Boarding Kelas Industri Gamelab Indonesia (HTML, CSS, JavaScript).</p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -898,7 +763,7 @@
     <footer class="py-8 bg-white border-t border-mono-200 text-center text-xs text-mono-500 font-mono mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-                &copy; 2026 <strong class="text-mono-900 font-sans">Achmad Fatkur Rizki</strong>. Clean Monochrome Architecture.
+                &copy; 2026 <strong class="text-mono-900 font-sans">Achmad Fatkur Rizki</strong>. 
             </div>
             <div class="flex items-center gap-4">
                 <span>D4 TI Polije PSDKU Nganjuk</span>
@@ -908,7 +773,7 @@
         </div>
     </footer>
 
-    <!-- External JavaScript -->
+    <script src="data.js" defer></script>
     <script src="script.js" defer></script>
 </body>
-</html> 
+</html>

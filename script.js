@@ -110,15 +110,73 @@ function closeModal() {
     document.getElementById('project-modal').classList.add('hidden');
 }
 
-// 5. Contact Form Handler
-const contactForm = document.getElementById('contact-form');
-const toastMessage = document.getElementById('toast-message');
+// 5. Render Sertifikasi Secara Dinamis
+function renderCertifications() {
+    const gridContainer = document.getElementById('certification-grid');
+    
+    // Jika container tidak ditemukan (mungkin karena sedang di halaman lain), hentikan fungsi
+    if (!gridContainer) return; 
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    toastMessage.classList.remove('hidden');
-    contactForm.reset();
-    setTimeout(() => {
-        toastMessage.classList.add('hidden');
-    }, 4000);
+    // Looping data dari data.js
+    let htmlContent = '';
+    
+    certificationsData.forEach(cert => {
+        // Jika badge berupa icon, tampilkan icon. Jika berupa teks (seperti EPT), tampilkan teks.
+        const badgeHTML = cert.isTrophy ? cert.badge : cert.badge;
+        
+        htmlContent += `
+            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
+                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+                    ${badgeHTML}
+                </div>
+                <div class="flex-grow flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">${cert.date}</span>
+                        <h3 class="text-base font-bold text-mono-900 mb-1">${cert.title}</h3>
+                        <p class="text-xs text-mono-600 mb-3">${cert.desc}</p>
+                    </div>
+                    
+                    <!-- Tombol Link -->
+                    <a href="${cert.link}" target="_blank" class="inline-flex items-center gap-2 px-3 py-1.5 bg-mono-50 hover:bg-mono-900 hover:text-white text-mono-900 text-[10px] font-bold uppercase tracking-wider rounded border border-mono-200 hover:border-mono-900 transition-colors w-fit">
+                        <i class="fa-brands fa-google-drive"></i> Lihat Sertifikat
+                    </a>
+                </div>
+            </div>
+        `;
+    });
+
+    // Masukkan hasil looping ke dalam HTML
+    gridContainer.innerHTML = htmlContent;
+}
+
+
+// Render Kepanitiaan
+function renderCommittees() {
+    const gridContainer = document.getElementById('committee-grid');
+    if (!gridContainer) return; 
+
+    let htmlContent = '';
+    
+    committeeData.forEach(item => {
+        htmlContent += `
+            <div class="committee-card">
+                <div>
+                    <span class="committee-card-date">${item.date}</span>
+                    <h3 class="committee-card-title">${item.title}</h3>
+                    <p class="committee-card-desc">${item.desc}</p>
+                </div>
+                <a href="${item.link}" target="_blank" class="committee-card-btn">
+                    <i class="fa-solid fa-file-lines"></i> Lihat Dokumentasi
+                </a>
+            </div>
+        `;
+    });
+
+    gridContainer.innerHTML = htmlContent;
+}
+
+// Pastikan dipanggil saat load
+document.addEventListener('DOMContentLoaded', () => {
+    renderCertifications();
+    renderCommittees(); 
 });
