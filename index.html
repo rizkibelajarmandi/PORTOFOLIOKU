@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achmad Fatkur Rizki | Portfolio Monokrom</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Config (WAJIB inline) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mono: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                            black: '#000000',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased selection:bg-mono-900 selection:text-white flex flex-col min-h-screen">
+
+    <!-- ULTRA CLEAN NAVBAR -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <button onclick="navigateTo('home')" class="flex items-center gap-2.5 text-left group focus:outline-none">
+                <div class="w-9 h-9 bg-mono-900 text-white rounded-lg flex items-center justify-center font-extrabold text-sm tracking-widest group-hover:bg-black transition-colors">
+                    AFR.
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-mono-900 block leading-none">Achmad Fatkur Rizki</span>
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-mono-500">Portfolio</span>
+                </div>
+            </button>
+
+            <!-- Minimal Nav Links (Desktop) -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-mono-600">
+                <button onclick="navigateTo('about')" id="nav-about" class="nav-link py-2 hover:text-mono-900 transition-colors">Tentang</button>
+                <button onclick="navigateTo('projects')" id="nav-projects" class="nav-link py-2 hover:text-mono-900 transition-colors">Proyek</button>
+                <button onclick="navigateTo('contact')" id="nav-contact" class="nav-link py-2 hover:text-mono-900 transition-colors">Kontak</button>
+                <a href="https://github.com/rizkibelajarmandi" target="_blank" rel="noopener" class="flex items-center gap-2 border border-mono-900 text-mono-900 font-bold px-4 py-2 rounded-lg hover:bg-mono-900 hover:text-white transition-all">
+                    <i class="fa-brands fa-github text-base"></i>
+                    <span>GitHub</span>
+                </a>
+            </nav>
+
+            <!-- Mobile Drawer Toggle -->
+            <button id="mobile-toggle" class="md:hidden p-2 text-mono-900 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-nav" class="hidden md:hidden bg-white border-b border-mono-200 px-6 py-6 space-y-4 text-xs font-bold uppercase tracking-widest">
+            <button onclick="navigateTo('about'); toggleMobileNav();" class="block w-full text-left py-2 text-mono-700 hover:text-mono-900">Tentang</button>
+            <button onclick="navigateTo('projects'); toggleMobileNav();" class="block w-full text-left py-2 text-mono-700 hover:text-mono-900">Proyek</button>
+            <button onclick="navigateTo('contact'); toggleMobileNav();" class="block w-full text-left py-2 text-mono-700 hover:text-mono-900">Kontak</button>
+            <a href="https://github.com/rizkibelajarmandi" target="_blank" class="flex items-center gap-2 py-3 border-t border-mono-200 text-mono-900 font-bold">
+                <i class="fa-brands fa-github text-lg"></i> GitHub Profile
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow pt-20">
+
+        <!-- ================= PAGE 1: HOME / DASHBOARD VIEW ================= -->
+        <div id="page-home" class="page-view">
+            
+            <!-- Hero Section -->
+            <section class="py-20 lg:py-24 bg-mono-50 border-b border-mono-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                        
+                        <!-- Hero Left: Greeting & Name -->
+                        <div class="lg:col-span-4 text-center lg:text-left space-y-4">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mono-200/60 border border-mono-300 text-[11px] font-mono font-semibold uppercase tracking-widest text-mono-700">
+                                <span class="w-2 h-2 rounded-full bg-mono-900"></span>
+                                Polije PSDKU Nganjuk
+                            </div>
+
+                            <div class="space-y-1">
+                                <p class="text-xs font-mono uppercase tracking-widest text-mono-500 font-bold">Hello, I'm</p>
+                                <h1 class="text-3xl sm:text-4xl xl:text-5xl font-extrabold tracking-tight text-mono-900 leading-tight">
+                                    Achmad <br class="hidden lg:block"/>
+                                    Fatkur Rizki
+                                </h1>
+                            </div>
+
+                            <p class="text-mono-600 text-xs font-mono">D4 Teknik Informatika | GPA: 3.87</p>
+
+                            <div class="pt-2 flex items-center justify-center lg:justify-start gap-3">
+                                <a href="https://github.com/rizkibelajarmandi" target="_blank" class="w-10 h-10 rounded-lg border border-mono-300 flex items-center justify-center text-mono-700 hover:bg-mono-900 hover:text-white hover:border-mono-900 transition-all">
+                                    <i class="fa-brands fa-github text-lg"></i>
+                                </a>
+                                <a href="mailto:afatkurrizki@gmail.com" class="w-10 h-10 rounded-lg border border-mono-300 flex items-center justify-center text-mono-700 hover:bg-mono-900 hover:text-white hover:border-mono-900 transition-all">
+                                    <i class="fa-regular fa-envelope text-lg"></i>
+                                </a>
+                                <a href="https://wa.me/6281336973450" target="_blank" class="w-10 h-10 rounded-lg border border-mono-300 flex items-center justify-center text-mono-700 hover:bg-mono-900 hover:text-white hover:border-mono-900 transition-all">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Hero Center: Photo Frame -->
+                        <div class="lg:col-span-4 flex justify-center py-4 lg:py-0">
+                            <div class="hero-img-container w-64 h-80 sm:w-72 sm:h-96">
+                                <div class="relative w-full h-full rounded-2xl overflow-hidden border border-mono-300 bg-mono-200 shadow-lg z-10 flex items-center justify-center">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+                                         alt="Achmad Fatkur Rizki" 
+                                         class="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-mono-950/90 to-transparent p-4 text-center">
+                                        <span class="text-xs font-mono font-bold text-white tracking-wider uppercase">Achmad Fatkur Rizki</span>
+                                        <p class="text-[10px] text-mono-300 font-mono">Nganjuk, Jawa Timur</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hero Right: Specialization & CTA -->
+                        <div class="lg:col-span-4 text-center lg:text-left space-y-6">
+                            <div class="space-y-2">
+                                <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500">Specialization</span>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900 tracking-tight leading-snug">
+                                    Web & Mobile <br class="hidden lg:block"/> Developer
+                                </h2>
+                            </div>
+
+                            <p class="text-mono-600 text-sm leading-relaxed">
+                                Berfokus pada arsitektur sistem perangkat lunak terstruktur (UML & Flowchart), pengelolaan basis data MySQL, serta pengembangan aplikasi PHP (MVC) dan Mobile Flutter.
+                            </p>
+
+                            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+                                <button onclick="navigateTo('projects')" class="w-full sm:w-auto px-6 py-3 rounded-lg bg-mono-900 text-white font-bold text-xs uppercase tracking-wider hover:bg-black transition-all text-center">
+                                    Lihat Proyek <i class="fa-solid fa-arrow-right ml-1"></i>
+                                </button>
+                                <button onclick="navigateTo('about')" class="w-full sm:w-auto px-6 py-3 rounded-lg border border-mono-300 text-mono-900 font-bold text-xs uppercase tracking-wider hover:border-mono-900 transition-all text-center">
+                                    Profil Lengkap
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Metric Stats Bar -->
+            <section class="py-12 bg-white border-b border-mono-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                        <div class="p-4 border-r border-mono-200 last:border-r-0">
+                            <div class="text-3xl font-extrabold text-mono-900 font-mono">3.87</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-mono-500 mt-1">IPK Polije Nganjuk</div>
+                        </div>
+                        <div class="p-4 md:border-r border-mono-200">
+                            <div class="text-3xl font-extrabold text-mono-900 font-mono">3+</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-mono-500 mt-1">Proyek PBL Sistem</div>
+                        </div>
+                        <div class="p-4 border-r border-mono-200">
+                            <div class="text-3xl font-extrabold text-mono-900 font-mono">4+</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-mono-500 mt-1">Jabatan Organisasi</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-3xl font-extrabold text-mono-900 font-mono">8+</div>
+                            <div class="text-xs font-bold uppercase tracking-wider text-mono-500 mt-1">Sertifikasi & Prestasi</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brief Highlights Section -->
+            <section class="py-16 bg-mono-50 border-b border-mono-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <!-- Card 1: Explore About Me -->
+                        <div class="card-monochrome p-8 rounded-2xl flex flex-col justify-between space-y-6">
+                            <div class="space-y-3">
+                                <span class="px-3 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded">Halaman Informasi</span>
+                                <h3 class="text-2xl font-extrabold text-mono-900">Tentang Saya & Rekam Jejak</h3>
+                                <p class="text-mono-600 text-xs leading-relaxed">
+                                    Pelajari lebih lanjut mengenai latar belakang pendidikan D4 Teknik Informatika, proyek PBL (Pasertu & Dechabooth), jabatan BEM & OSIS, pengalaman kepanitiaan, materi public speaking, keahlian teknis, hingga sertifikasi.
+                                </p>
+                            </div>
+                            <div>
+                                <button onclick="navigateTo('about')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-mono-900 hover:underline">
+                                    Buka Halaman Tentang <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Explore Projects -->
+                        <div class="card-monochrome p-8 rounded-2xl flex flex-col justify-between space-y-6">
+                            <div class="space-y-3">
+                                <span class="px-3 py-1 bg-mono-200 text-mono-900 font-mono text-[10px] font-bold uppercase rounded">Halaman Portofolio</span>
+                                <h3 class="text-2xl font-extrabold text-mono-900">Showcase Proyek Software</h3>
+                                <p class="text-mono-600 text-xs leading-relaxed">
+                                    Eksplorasi koleksi proyek aplikasi Web (PHP MVC), Mobile (Flutter), pengujian sistem (Software Testing), dan pemodelan diagram UML terstruktur lengkap dengan repositori GitHub.
+                                </p>
+                            </div>
+                            <div>
+                                <button onclick="navigateTo('projects')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-mono-900 hover:underline">
+                                    Buka Halaman Proyek <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION KONTAK -->
+            <section id="contact" class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl mb-16">
+                        <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500">Mari Terhubung</span>
+                        <h2 class="text-3xl font-extrabold text-mono-900 tracking-tight mt-1">Kontak & Lokasi</h2>
+                        <div class="w-12 h-1 bg-mono-900 mt-3"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <!-- Direct Info -->
+                        <div class="lg:col-span-5 space-y-6">
+                            <h3 class="text-xl font-bold text-mono-900">Tertarik Berkolaborasi?</h3>
+                            <p class="text-mono-600 text-sm leading-relaxed">
+                                Terbuka untuk diskusi proyek pengembangan perangkat lunak web/mobile, pemodelan sistem, serta kesempatan kerja sama dan karir.
+                            </p>
+
+                            <div class="space-y-4 pt-2">
+                                <div class="flex items-center gap-4 p-4 bg-mono-50 border border-mono-200 rounded-xl">
+                                    <div class="w-10 h-10 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block">Email Resmi</span>
+                                        <a href="mailto:afatkurrizki@gmail.com" class="text-sm font-bold text-mono-900 hover:underline">afatkurrizki@gmail.com</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 p-4 bg-mono-50 border border-mono-200 rounded-xl">
+                                    <div class="w-10 h-10 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block">WhatsApp / Telepon</span>
+                                        <a href="https://wa.me/6281336973450" target="_blank" class="text-sm font-bold text-mono-900 hover:underline">+62 813 3697 3450</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4 p-4 bg-mono-50 border border-mono-200 rounded-xl">
+                                    <div class="w-10 h-10 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono text-mono-400 font-bold uppercase block">Domisili</span>
+                                        <span class="text-sm font-bold text-mono-900">Nganjuk, Jawa Timur, Indonesia</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Kontak -->
+                        <div class="lg:col-span-7">
+                            <form id="contact-form" class="bg-mono-50 p-8 rounded-2xl border border-mono-200 space-y-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Nama Lengkap</label>
+                                        <input type="text" required placeholder="Nama Anda" class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Alamat Email</label>
+                                        <input type="email" required placeholder="email@domain.com" class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Subjek Pesan</label>
+                                    <input type="text" required placeholder="Topik Diskusi / Kolaborasi" class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-mono font-bold uppercase text-mono-700 mb-2">Isi Pesan</label>
+                                    <textarea rows="4" required placeholder="Tuliskan pesan Anda di sini..." class="w-full px-4 py-3 rounded-lg border border-mono-300 text-mono-900 text-sm focus:outline-none focus:border-mono-900 transition-colors bg-white"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full py-4 rounded-lg bg-mono-900 text-white font-bold text-xs uppercase tracking-widest hover:bg-black transition-all">
+                                    Kirim Pesan Sekarang <i class="fa-solid fa-paper-plane ml-2"></i>
+                                </button>
+
+                                <div id="toast-message" class="hidden p-4 rounded-lg bg-mono-900 text-white text-xs font-mono text-center">
+                                    <i class="fa-solid fa-check-circle mr-2 text-emerald-400"></i> Pesan Anda telah terkirim! Terima kasih.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 2: DEDICATED ABOUT PAGE (REVISI DESAIN) ================= -->
+        <div id="page-about" class="page-view hidden">
+            
+            <!-- Dark Header Banner -->
+            <section class="py-16 bg-mono-950 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <span class="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-widest text-mono-300">INFORMASI LENGKAP</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Tentang Achmad Fatkur Rizki</h1>
+                    <p class="text-mono-300 text-xs sm:text-sm mt-3 max-w-2xl leading-relaxed">
+                        Informasi pendidikan, proyek software developer, pengalaman organisasi, kepanitiaan, public speaking, keahlian teknis, hingga sertifikasi resmi.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Main Content Container -->
+            <section class="py-16 bg-mono-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+                    <!-- BAGIAN 01: Profil & Riwayat Pendidikan -->
+                    <div>
+                        <div class="border-l-4 border-mono-900 pl-4 mb-8">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500 block mb-1">BAGIAN 01</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Profil & Riwayat Pendidikan</h2>
+                        </div>
+
+                        <div class="bg-white p-6 sm:p-8 rounded-xl border border-mono-200 mb-6">
+                            <h3 class="text-lg font-bold text-mono-900 mb-3">Ringkasan Profil</h3>
+                            <p class="text-sm text-mono-600 leading-relaxed mb-4">
+                                Mahasiswa D4 Teknik Informatika Politeknik Negeri Jember PSDKU Nganjuk yang berfokus pada arsitektur sistem dan pengembangan perangkat lunak. Memiliki pengalaman praktis dalam pengembangan aplikasi web dan mobile, pemodelan sistem (UML & flowchart), pengelolaan basis data MySQL, serta implementasi logika pemrograman menggunakan PHP, Java, Dart, dan HTML/CSS/JavaScript.
+                            </p>
+                            <p class="text-sm text-mono-600 leading-relaxed">
+                                Memiliki antusiasme tinggi terhadap perkembangan teknologi terbaru dan penerapannya dalam membangun solusi digital yang terstruktur, efisien, serta dapat diandalkan. Aktif berkontribusi dalam organisasi dan kepanitiaan kampus dengan kemampuan komunikasi, pemecahan masalah, serta kerja sama tim yang kuat.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-6">
+                            <!-- Edu Card 1 -->
+                            <div class="bg-white p-6 sm:p-8 rounded-xl border border-mono-200">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                                    <span class="px-3 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded w-fit">D4 TEKNIK INFORMATIKA</span>
+                                    <span class="text-xs font-mono font-semibold text-mono-500">2025 - Sekarang</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-mono-900">Politeknik Negeri Jember (PSDKU Nganjuk)</h3>
+                                <p class="text-sm font-bold text-mono-900 mt-2">IPK Kumulatif: 3.87</p>
+                                <p class="text-xs text-mono-600 mt-2 leading-relaxed">
+                                    <strong class="text-mono-900">Mata Kuliah Relevan:</strong> Konsep Basis Data, Pemrograman Dasar (Java), Sistem Aplikasi Berbasis Objek, IMK, Konsep Jaringan Komputer, Sistem Informasi Web Client, Mobile Application Advance, Struktur Data, Teknologi Basis Data.
+                                </p>
+                            </div>
+                            
+                            <!-- Edu Card 2 -->
+                            <div class="bg-white p-6 sm:p-8 rounded-xl border border-mono-200">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                                    <span class="px-3 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded w-fit">SMK KEJURUAN (TKJ)</span>
+                                    <span class="text-xs font-mono font-semibold text-mono-500">2022 - 2025</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-mono-900">SMK Negeri Sugihwaras</h3>
+                                <p class="text-xs text-mono-600 mt-2 leading-relaxed">
+                                    <strong class="text-mono-900">Fokus Keahlian:</strong> Administrasi Sistem Jaringan, Perakitan Hardware Komputer, Instalasi Mikrotik, Pemrograman Dasar, Instalasi Sistem Operasi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 02: Pengalaman Software Developer -->
+                    <div>
+                        <div class="border-l-4 border-mono-900 pl-4 mb-8">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500 block mb-1">BAGIAN 02</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Pengalaman Software Developer (Project Based Learning)</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Dev Card 1 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200 flex flex-col">
+                                <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded self-start mb-4">WEB & MOBILE DEV</span>
+                                <span class="text-xs font-mono text-mono-500 mb-2">Sep. 2026 - Sekarang</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-3">Pasertu (PBL Project)</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed flex-grow">
+                                    Bertanggung jawab atas pengembangan aplikasi lintas platform (web dan mobile), merancang arsitektur sistem, serta memastikan performa & keandalan fitur aplikasi Pasertu.
+                                </p>
+                            </div>
+                            
+                            <!-- Dev Card 2 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200 flex flex-col">
+                                <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded self-start mb-4">MOBILE DEV & TESTING</span>
+                                <span class="text-xs font-mono text-mono-500 mb-2">Feb. 2026 - Juni. 2026</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-3">Dechabooth Mobile</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed flex-grow">
+                                    Mengembangkan fitur-fitur aplikasi mobile Dechabooth serta melakukan pengujian aplikasi (software testing) untuk mengidentifikasi bug & kelayakan sistem sebelum rilis.
+                                </p>
+                            </div>
+
+                            <!-- Dev Card 3 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200 flex flex-col">
+                                <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded self-start mb-4">WEB DEV & MODELING</span>
+                                <span class="text-xs font-mono text-mono-500 mb-2">Agu. 2025 - Des. 2025</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-3">Dechabooth Web</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed flex-grow">
+                                    Merancang pemodelan sistem via flowchart & diagram UML (Use Case, Activity, Class Diagram) serta membangun logika backend PHP MVC, MySQL DB, & frontend responsif.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 03: Pengalaman Organisasi -->
+                    <div>
+                        <div class="border-l-4 border-mono-900 pl-4 mb-8">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500 block mb-1">BAGIAN 03</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Pengalaman Organisasi</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Org 1 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded">BEM POLIJE PSDKU NGANJUK</span>
+                                    <span class="text-xs font-mono text-mono-500">Jan. 2026 - Sekarang</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Staff Ahli Kementerian Perhubungan</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">
+                                    Mengkoordinasikan komunikasi serta alur informasi antara mahasiswa PSDKU Nganjuk dengan kampus utama, sekaligus memediasi & memfasilitasi berbagai kegiatan mahasiswa di kampus PSDKU.
+                                </p>
+                            </div>
+
+                            <!-- Org 2 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded">BEM POLIJE PSDKU NGANJUK</span>
+                                    <span class="text-xs font-mono text-mono-500">Sep. 2025 - Nov. 2025</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Staff Muda Kementerian Perhubungan</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">
+                                    Membantu pelaksanaan tugas-tugas administratif dan operasional Kementerian Perhubungan BEM, sekaligus mendukung koordinasi komunikasi antar-mahasiswa.
+                                </p>
+                            </div>
+
+                            <!-- Org 3 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded">OSIS SMKN SUGIHWARAS</span>
+                                    <span class="text-xs font-mono text-mono-500">Jul. 2023 - Jun. 2024</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Ketua Organisasi Siswa Intra Sekolah</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">
+                                    Memimpin seluruh kepengurusan OSIS SMK Negeri Sugihwaras dalam merencanakan, mengkoordinasikan, dan mengeksekusi berbagai program kerja kesiswaan serta menjadi penghubung sekolah.
+                                </p>
+                            </div>
+
+                            <!-- Org 4 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <div class="flex justify-between items-center mb-4">
+                                    <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded">OSIS SMKN SUGIHWARAS</span>
+                                    <span class="text-xs font-mono text-mono-500">Jul. 2022 - Jun. 2023</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Bendahara II OSIS</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">
+                                    Membantu Bendahara Utama dalam mengelola pencatatan kas, mencatat arus keluar-masuk keuangan, serta menyusun laporan keuangan kegiatan OSIS.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 04: Pengalaman Kepanitiaan Event -->
+                    <div>
+                        <div class="border-l-4 border-mono-900 pl-4 mb-8">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500 block mb-1">BAGIAN 04</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Pengalaman Kepanitiaan Event</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Event 1 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">OKT. 2026</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Ketua Panitia Nganjuk Skill Up</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">Memimpin & mengkoordinasikan seluruh divisi kepanitiaan turnamen futsal dari tahap perencanaan hingga pelaksanaan.</p>
+                            </div>
+
+                            <!-- Event 2 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">AGU. 2026 - SEKARANG</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Media Partner Art Of Manunggal</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">Membangun hubungan kerja sama publikasi dengan berbagai platform media partner Jurusan Teknologi Informasi.</p>
+                            </div>
+
+                            <!-- Event 3 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">SEP. 2026</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Perlengkapan Nganjuk Skill Clash V2</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">Mengelola kebutuhan peralatan teknis dan perlengkapan arena Turnamen E-Sport.</p>
+                            </div>
+
+                            <!-- Event 4 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">AGU. 2026</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Acara Pra-PKKMB 2026</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">Bertanggung jawab atas konsep kegiatan, pengisi acara, dan pengawasan operasional alur acara Pra-PKKMB Polije Nganjuk.</p>
+                            </div>
+
+                            <!-- Event 5 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">MEI. 2026</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Acara Workshop Bisnis Digital</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">Menyusun rundown dan memandu jalannya sesi pelatihan Workshop Peluang Digital Untuk Bisnis Berkelanjutan.</p>
+                            </div>
+
+                            <!-- Event 6 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="text-xs font-mono text-mono-500 font-semibold block mb-2">OKT. 2025</span>
+                                <h3 class="text-lg font-bold text-mono-900 mb-2">Divisi Humas Nganjuk Skill Clash</h3>
+                                <p class="text-xs text-mono-600 leading-relaxed">Sosialisasi turnamen Mobile Legends se-Kabupaten Nganjuk & menangani Customer Service layanan informasi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 05: Pengalaman Public Speaking -->
+                    <div>
+                        <div class="border-l-4 border-mono-900 pl-4 mb-8">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500 block mb-1">BAGIAN 05</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Pengalaman Public Speaking</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Speaking 1 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded inline-block mb-4">PEMATERI OFFICIAL</span>
+                                <span class="text-xs font-mono text-mono-500 block mb-2">Okt. 2026</span>
+                                <h3 class="text-base font-bold text-mono-900 mb-1">Workshop Google Workspace</h3>
+                                <p class="text-xs font-semibold text-mono-700 mb-3">SMAN 1 Gondang Nganjuk</p>
+                                <p class="text-xs text-mono-600 leading-relaxed">
+                                    Menyampaikan materi dan memandu pelatihan Google Workspace untuk meningkatkan efektivitas kerja, manajemen organisasi, dan kolaborasi digital pengurus OSIS SMAN 1 Gondang.
+                                </p>
+                            </div>
+
+                            <!-- Speaking 2 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded inline-block mb-4">PEMBICARA SESSION</span>
+                                <span class="text-xs font-mono text-mono-500 block mb-2">Okt. 2026</span>
+                                <h3 class="text-base font-bold text-mono-900 mb-1">Sharing Session Makrab TI 2026</h3>
+                                <p class="text-xs font-semibold text-mono-700 mb-3">Politeknik Negeri Jember PSDKU Nganjuk</p>
+                                <p class="text-xs text-mono-600 leading-relaxed">
+                                    Berbagi pengalaman berorganisasi dengan mahasiswa baru Teknik Informatika Politeknik Negeri Jember PSDKU Nganjuk Angkatan 2026 di kegiatan malam keakraban.
+                                </p>
+                            </div>
+
+                            <!-- Speaking 3 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <span class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded inline-block mb-4">PEMBICARA SESSION</span>
+                                <span class="text-xs font-mono text-mono-500 block mb-2">Agu. 2026</span>
+                                <h3 class="text-base font-bold text-mono-900 mb-1">Sharing Session Pra-PKKMB 2026</h3>
+                                <p class="text-xs font-semibold text-mono-700 mb-3">Politeknik Negeri Jember PSDKU Nganjuk</p>
+                                <p class="text-xs text-mono-600 leading-relaxed">
+                                    Berbagi pengalaman dengan mahasiswa baru Teknik Informatika & Manajemen Agribisnis Politeknik Negeri Jember PSDKU Nganjuk Angkatan 2026.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 06: Keahlian & Tools Teknis -->
+                    <div>
+                        <div class="border-l-4 border-mono-900 pl-4 mb-8">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500 block mb-1">BAGIAN 06</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Keahlian & Tools Teknis</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Skill Card 1 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <h3 class="text-sm font-bold text-mono-900 flex items-center gap-2 mb-4">
+                                    <i class="fa-solid fa-code text-mono-600"></i> Pemrograman & Framework
+                                </h3>
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex gap-2">
+                                        <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center w-full">PHP (MVC)</span>
+                                        <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center w-full">Java</span>
+                                    </div>
+                                    <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center">Dart & Flutter</span>
+                                    <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center">HTML / CSS / JS</span>
+                                </div>
+                            </div>
+
+                            <!-- Skill Card 2 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <h3 class="text-sm font-bold text-mono-900 flex items-center gap-2 mb-4">
+                                    <i class="fa-solid fa-sitemap text-mono-600"></i> Database & Pemodelan
+                                </h3>
+                                <div class="flex flex-col gap-2">
+                                    <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center">MySQL Database</span>
+                                    <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center">Diagram UML</span>
+                                    <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center">Use Case & Activity</span>
+                                    <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center">Flowchart Logic</span>
+                                    <span class="px-2.5 py-1 border border-mono-200 text-mono-800 text-xs font-mono rounded text-center">Visual Studio Code</span>
+                                </div>
+                            </div>
+
+                            <!-- Skill Card 3 -->
+                            <div class="bg-white p-6 rounded-xl border border-mono-200">
+                                <h3 class="text-sm font-bold text-mono-900 flex items-center gap-2 mb-4">
+                                    <i class="fa-solid fa-comments text-mono-600"></i> Soft Skills & Bahasa
+                                </h3>
+                                <ul class="text-xs text-mono-700 font-medium space-y-2">
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-1.5"></i> Leadership & Kepemimpinan Tim</li>
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-1.5"></i> Public Speaking & Presentasi</li>
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-1.5"></i> Berpikir Kritis & Problem Solving</li>
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-1.5"></i> Bahasa Indonesia (Fasih)</li>
+                                    <li class="flex items-start gap-2"><i class="fa-solid fa-circle text-[4px] mt-1.5"></i> Bahasa Inggris (EPT Score: 48)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 07: Sertifikasi, Pelatihan & Penghargaan -->
+                    <div>
+                        <div class="border-l-4 border-mono-900 pl-4 mb-8">
+                            <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-500 block mb-1">BAGIAN 07</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-mono-900">Sertifikasi, Pelatihan & Penghargaan</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Cert 1 -->
+                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
+                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+                                    EPT
+                                </div>
+                                <div>
+                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">JUN. 2026</span>
+                                    <h3 class="text-base font-bold text-mono-900 mb-1">English Proficiency Test (Score: 48)</h3>
+                                    <p class="text-xs text-mono-600">Politeknik Negeri Jember PSDKU Nganjuk (Elementary Level).</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 2 -->
+                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
+                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-trophy text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">SEP. 2026</span>
+                                    <h3 class="text-base font-bold text-mono-900 mb-1">Nominasi 10 Terbaik Lomba Menulis Puisi Nasional</h3>
+                                    <p class="text-xs text-mono-600">Lomba Puisi Nasional "Merawat Masa Depan dalam Jejak Ayah" - Komunitas Rumah Hening.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 3 -->
+                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
+                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+                                    LKS
+                                </div>
+                                <div>
+                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">FEB. 2024</span>
+                                    <h3 class="text-base font-bold text-mono-900 mb-1">Harapan I LKS Administrasi Sistem Jaringan</h3>
+                                    <p class="text-xs text-mono-600">Lomba Kompetensi Siswa (LKS) tingkat Kabupaten Nganjuk bidang ASJ.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 4 -->
+                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
+                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+                                    KMM
+                                </div>
+                                <div>
+                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">APR. 2026</span>
+                                    <h3 class="text-base font-bold text-mono-900 mb-1">LKMM-TD (Tingkat Dasar)</h3>
+                                    <p class="text-xs text-mono-600">Diselenggarakan oleh HMJ Teknologi Informasi Politeknik Negeri Jember.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 5 -->
+                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
+                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+                                    UKK
+                                </div>
+                                <div>
+                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">FEB. 2025</span>
+                                    <h3 class="text-base font-bold text-mono-900 mb-1">Sertifikasi Uji Kompetensi Keahlian (UKK)</h3>
+                                    <p class="text-xs text-mono-600">Lulus sertifikasi pengujian kompetensi keahlian TKJ SMKN Sugihwaras.</p>
+                                </div>
+                            </div>
+
+                            <!-- Cert 6 -->
+                            <div class="bg-white p-5 rounded-xl border border-mono-200 flex gap-4">
+                                <div class="w-12 h-12 bg-mono-900 text-white rounded-lg flex items-center justify-center shrink-0 font-mono font-bold text-xs">
+                                    WEB
+                                </div>
+                                <div>
+                                    <span class="text-xs font-mono text-mono-500 font-semibold block mb-1">JAN. 2023 - JAN. 2026</span>
+                                    <h3 class="text-base font-bold text-mono-900 mb-1">Web Full Stack Developer (Gamelab)</h3>
+                                    <p class="text-xs text-mono-600">On Boarding Kelas Industri Gamelab Indonesia (HTML, CSS, JavaScript).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 3: DEDICATED PROJECTS PAGE ================= -->
+        <div id="page-projects" class="page-view hidden">
+            
+            <!-- Header Banner -->
+            <section class="py-16 bg-mono-900 text-white border-b border-mono-800">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <span class="text-xs font-mono font-bold uppercase tracking-widest text-mono-400">Showcase Karya</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mt-1">Portofolio Proyek Software</h1>
+                    <p class="text-mono-300 text-xs sm:text-sm mt-2 max-w-2xl">
+                        Aplikasi berbasis Web, Mobile Flutter, Pengujian Perangkat Lunak, serta Pemodelan Arsitektur Sistem UML & Flowchart.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Projects Grid Section -->
+            <section class="py-16 bg-mono-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <!-- Filters & Search -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+                        <div class="flex flex-wrap gap-2" id="project-filters">
+                            <button onclick="filterProjects('all')" class="filter-btn active px-4 py-2 rounded-lg border border-mono-900 text-xs font-mono font-bold uppercase bg-mono-900 text-white" data-filter="all">Semua Proyek</button>
+                            <button onclick="filterProjects('web')" class="filter-btn px-4 py-2 rounded-lg border border-mono-300 text-xs font-mono font-bold uppercase bg-white text-mono-700 hover:border-mono-900" data-filter="web">Web Dev</button>
+                            <button onclick="filterProjects('mobile')" class="filter-btn px-4 py-2 rounded-lg border border-mono-300 text-xs font-mono font-bold uppercase bg-white text-mono-700 hover:border-mono-900" data-filter="mobile">Mobile Dev</button>
+                            <button onclick="filterProjects('system')" class="filter-btn px-4 py-2 rounded-lg border border-mono-300 text-xs font-mono font-bold uppercase bg-white text-mono-700 hover:border-mono-900" data-filter="system">Arsitektur Sistem</button>
+                        </div>
+
+                        <div class="text-xs font-mono text-mono-500">
+                            Menampilkan proyek Project Based Learning (PBL)
+                        </div>
+                    </div>
+
+                    <!-- Project Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Card 1: Pasertu -->
+                        <div class="project-item card-monochrome rounded-2xl overflow-hidden flex flex-col justify-between" data-category="web mobile system">
+                            <div>
+                                <div class="h-48 bg-mono-900 p-6 flex flex-col justify-between text-white">
+                                    <div class="flex justify-between items-center">
+                                        <span class="px-2.5 py-1 bg-white text-mono-900 text-[10px] font-mono font-bold uppercase rounded">Cross-Platform</span>
+                                        <i class="fa-solid fa-cubes text-2xl text-mono-400"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono text-mono-300 block">Sep 2026 - Sekarang</span>
+                                        <h3 class="text-2xl font-bold text-white">Pasertu App</h3>
+                                    </div>
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="px-2 py-0.5 bg-mono-100 text-mono-800 text-[10px] font-mono rounded">Web & Mobile</span>
+                                        <span class="px-2 py-0.5 bg-mono-100 text-mono-800 text-[10px] font-mono rounded">System Architecture</span>
+                                    </div>
+                                    <p class="text-mono-600 text-xs leading-relaxed">
+                                        Pengembangan aplikasi lintas platform (web & mobile), perancangan arsitektur sistem terstruktur, serta optimasi keandalan performa fitur.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2 border-t border-mono-100 flex items-center justify-between">
+                                <button onclick="openModal('pasertu')" class="text-xs font-bold text-mono-900 hover:underline">
+                                    Detail Proyek <i class="fa-solid fa-circle-info ml-1"></i>
+                                </button>
+                                <a href="https://github.com/rizkibelajarmandi" target="_blank" class="text-xs font-bold text-mono-600 hover:text-mono-900">
+                                    <i class="fa-brands fa-github text-sm"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Dechabooth Mobile -->
+                        <div class="project-item card-monochrome rounded-2xl overflow-hidden flex flex-col justify-between" data-category="mobile">
+                            <div>
+                                <div class="h-48 bg-mono-800 p-6 flex flex-col justify-between text-white">
+                                    <div class="flex justify-between items-center">
+                                        <span class="px-2.5 py-1 bg-white text-mono-900 text-[10px] font-mono font-bold uppercase rounded">Mobile Flutter</span>
+                                        <i class="fa-solid fa-mobile-screen text-2xl text-mono-400"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono text-mono-300 block">Feb 2026 - Juni 2026</span>
+                                        <h3 class="text-2xl font-bold text-white">Dechabooth Mobile</h3>
+                                    </div>
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="px-2 py-0.5 bg-mono-100 text-mono-800 text-[10px] font-mono rounded">Dart & Flutter</span>
+                                        <span class="px-2 py-0.5 bg-mono-100 text-mono-800 text-[10px] font-mono rounded">Software Testing</span>
+                                    </div>
+                                    <p class="text-mono-600 text-xs leading-relaxed">
+                                        Pengembangan fitur-fitur mobile app Dechabooth serta eksekusi software testing menyeluruh untuk eliminasi bug sebelum kelayakan rilis.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2 border-t border-mono-100 flex items-center justify-between">
+                                <button onclick="openModal('dechabooth-mobile')" class="text-xs font-bold text-mono-900 hover:underline">
+                                    Detail Proyek <i class="fa-solid fa-circle-info ml-1"></i>
+                                </button>
+                                <a href="https://github.com/rizkibelajarmandi" target="_blank" class="text-xs font-bold text-mono-600 hover:text-mono-900">
+                                    <i class="fa-brands fa-github text-sm"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Dechabooth Web -->
+                        <div class="project-item card-monochrome rounded-2xl overflow-hidden flex flex-col justify-between" data-category="web system">
+                            <div>
+                                <div class="h-48 bg-mono-950 p-6 flex flex-col justify-between text-white">
+                                    <div class="flex justify-between items-center">
+                                        <span class="px-2.5 py-1 bg-white text-mono-900 text-[10px] font-mono font-bold uppercase rounded">Web MVC & UML</span>
+                                        <i class="fa-solid fa-sitemap text-2xl text-mono-400"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] font-mono text-mono-300 block">Agu 2025 - Des 2025</span>
+                                        <h3 class="text-2xl font-bold text-white">Dechabooth Web</h3>
+                                    </div>
+                                </div>
+                                <div class="p-6 space-y-3">
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="px-2 py-0.5 bg-mono-100 text-mono-800 text-[10px] font-mono rounded">PHP MVC</span>
+                                        <span class="px-2 py-0.5 bg-mono-100 text-mono-800 text-[10px] font-mono rounded">MySQL DB</span>
+                                        <span class="px-2 py-0.5 bg-mono-100 text-mono-800 text-[10px] font-mono rounded">UML Diagram</span>
+                                    </div>
+                                    <p class="text-mono-600 text-xs leading-relaxed">
+                                        Perancangan pemodelan UML (Use Case, Activity, Class Diagram), flowchart alur sistem, serta pembangunan web backend PHP MVC & MySQL.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="px-6 pb-6 pt-2 border-t border-mono-100 flex items-center justify-between">
+                                <button onclick="openModal('dechabooth-web')" class="text-xs font-bold text-mono-900 hover:underline">
+                                    Detail Proyek <i class="fa-solid fa-circle-info ml-1"></i>
+                                </button>
+                                <a href="https://github.com/rizkibelajarmandi" target="_blank" class="text-xs font-bold text-mono-600 hover:text-mono-900">
+                                    <i class="fa-brands fa-github text-sm"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- PROJECT PREVIEW MODAL CONTAINER -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-mono-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-mono-300 animate-fadeIn">
+            <div class="flex justify-between items-start border-b border-mono-200 pb-4">
+                <div>
+                    <span id="modal-tag" class="px-2.5 py-1 bg-mono-900 text-white font-mono text-[10px] font-bold uppercase rounded">Modal Category</span>
+                    <h3 id="modal-title" class="text-2xl font-extrabold text-mono-900 mt-2">Project Title</h3>
+                </div>
+                <button onclick="closeModal()" class="text-mono-400 hover:text-mono-900 text-xl font-bold p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="modal-body" class="text-xs text-mono-600 space-y-4 leading-relaxed">
+                <!-- Injected via JS -->
+            </div>
+
+            <div class="pt-4 border-t border-mono-200 flex justify-between items-center">
+                <a id="modal-github" href="https://github.com/rizkibelajarmandi" target="_blank" class="px-4 py-2 bg-mono-900 text-white text-xs font-bold uppercase rounded hover:bg-black">
+                    <i class="fa-brands fa-github mr-1"></i> Lihat Repositori
+                </a>
+                <button onclick="closeModal()" class="px-4 py-2 border border-mono-300 text-mono-800 text-xs font-bold uppercase rounded hover:border-mono-900">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-white border-t border-mono-200 text-center text-xs text-mono-500 font-mono mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                &copy; 2026 <strong class="text-mono-900 font-sans">Achmad Fatkur Rizki</strong>. Clean Monochrome Architecture.
+            </div>
+            <div class="flex items-center gap-4">
+                <span>D4 TI Polije PSDKU Nganjuk</span>
+                <span>•</span>
+                <a href="https://github.com/rizkibelajarmandi" target="_blank" class="hover:text-mono-900">GitHub Profile</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html> 
