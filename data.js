@@ -10,7 +10,7 @@ const committeeData = [
         date: "OKT. 2026",
         title: "Ketua Panitia Nganjuk Skill Up",
         desc: "Memimpin & mengkoordinasikan seluruh divisi kepanitiaan turnamen futsal dari tahap perencanaan hingga pelaksanaan.",
-        link: "https://drive.google.com/file/d/1VYLlj6phhujMPzII6tTfd83HY8WIT6tm/view?usp=drive_link"
+        link: "https://drive.google.com/file/d/1meMJFxs1FAZjIHuqZGp7xnYEkiwj3XFu/view?usp=drive_link"
     },
     {
         date: "AGU. 2026 - SEKARANG",
